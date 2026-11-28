@@ -47,6 +47,7 @@ public:
 	virtual Real vslot10(Int);					// slot 10, 0x003A3700
 	virtual Bool vslot11() const;					// slot 11, folded `return false` 0x0047A699
 	virtual void vslot12(Xfer *xfer, void *);			// slot 12, 0x0055AED6
+	void failBuild(Int);
 	virtual Coord3D getLocation() const = 0;			// slot 13 (Team's override has the map name)
 	virtual Bool vslot14() const = 0;				// slot 14
 	virtual Bool vslot15(Int) = 0;					// slot 15
