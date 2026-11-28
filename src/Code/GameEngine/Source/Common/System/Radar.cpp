@@ -93,6 +93,39 @@ void RadarMarker::DeleteReference()
 // FUNCTION: BFME2 0x002D76C6 size=78 name=?Rva002D76C6Remove@@YG_NPAURva002D76C6Owner@@PAPAURva002D76C6Node@@@Z evidence=?:placeholder tier=A
 
 // FUNCTION: BFME2 0x002D7714 size=48 name=?removeObject@Radar@@QAEXPAURva002D76C6Owner@@@Z evidence=N:ledger tier=A
+void Radar::removeObject(Object *obj)
+{
+	if (!obj->m_radarData)
+		return;
+
+	RadarObject **list = &m_objectList;
+	while (*list)
+	{
+		RadarObject *radarObject = *list;
+		if (radarObject->m_object == obj)
+		{
+			*list = radarObject->m_next;
+			obj->m_radarData = NULL;
+			delete radarObject;
+			return;
+		}
+		list = &radarObject->m_next;
+	}
+
+	list = &m_localObjectList;
+	while (*list)
+	{
+		RadarObject *radarObject = *list;
+		if (radarObject->m_object == obj)
+		{
+			*list = radarObject->m_next;
+			obj->m_radarData = NULL;
+			delete radarObject;
+			return;
+		}
+		list = &radarObject->m_next;
+	}
+}
 
 // FUNCTION: BFME2 0x002D7744 size=133 name=?radarToWorld@Radar@@QAE_NPBUICoord2D@@PAVCoord3D@@@Z evidence=X:retail PE exports class Coord3D: ??0Matrix4D@@QAE@ABVCoord3D@@@Z tier=A
 bool Radar::radarToWorld(const ICoord2D *radar, Coord3D *world)
