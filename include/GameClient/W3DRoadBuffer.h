@@ -104,6 +104,8 @@ typedef char RoadSegmentSize[(sizeof(RoadSegment) == 0xBC) ? 1 : -1];
 class RoadType
 {
 public:
+	RoadType();
+
 	TextureClass *m_roadTexture;		// +0x00 roads texture
 	VertexBufferClass *m_vertexRoad;	// +0x04 road vertex buffer.
 	DX8IndexBufferClass *m_indexRoad;	// +0x08 indices defining the triangles for the road drawing.

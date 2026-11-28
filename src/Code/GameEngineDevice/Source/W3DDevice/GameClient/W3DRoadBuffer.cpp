@@ -177,6 +177,18 @@ void W3DRoadBuffer::updateLighting()
 // FUNCTION: BFME2 0x000D4A7C size=5 name=?enable@Rva000D4A7COneSetter@@QAEXXZ evidence=?:placeholder tier=B hypothesis:K
 
 // FUNCTION: BFME2 0x000D4F2F size=32 name=??0RoadType@@QAE@XZ evidence=N:ledger tier=B hypothesis:K
+RoadType::RoadType() :
+	m_roadTexture(0),
+	m_vertexRoad(0),
+	m_indexRoad(0),
+	m_numRoadVertices(0),
+	m_numRoadIndices(0),
+	m_unk0x14(0),
+	m_uniqueID(-1),
+	m_isAutoLoaded(false),
+	m_stackingOrder(0)
+{
+}
 
 // FUNCTION: BFME2 0x000D4F4F size=108 name=??1RoadType@@QAE@XZ evidence=N:ledger tier=B hypothesis:K
 
