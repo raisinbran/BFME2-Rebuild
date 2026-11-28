@@ -118,6 +118,8 @@ unsigned long CRC_Stringi(const char *string, unsigned long crc)
 }
 
 // FUNCTION: BFME2 0x00615940 size=88 name=??0CacheStraw@@QAE@H@Z evidence=N:ledger tier=B hypothesis:K
-// The constructor was compiled where Buffer(long) is not visible (retail calls it out of line); written here the
-// compiler inlines it, so the body waits for the row to move to its own translation unit.
+CacheStraw::CacheStraw(int length)
+	: BufferPtr(length), Index(0), Length(0)
+{
+}
 
