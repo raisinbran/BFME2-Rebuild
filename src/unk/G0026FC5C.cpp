@@ -1,6 +1,9 @@
+// Portions derived from Command & Conquer Generals and Command & Conquer Generals Zero Hour, (c) Electronic Arts Inc., GPL-3.0-or-later; see LICENSE and NOTICE.
 // Generated from the ledger; map snapshot c591f7146f88c8a8248ebb8ae22f0c978c22aed463db64e05ef57ff0dfae99cc
 // object=G0026FC5C name-evidence=invented
 // Extents and edges are hypotheses; byte verification alone does not establish original TU boundaries.
+#include "WWMath/Vector3.h"
+
 // FUNCTION: BFME2 0x0026FC5C size=7 name=?get@Rva0026FC5CByteField@@QBEEXZ evidence=?:placeholder tier=B hypothesis:mm1-gap-unit
 // FUNCTION: BFME2 0x0026FC63 size=12 name=?get@Rva0026FC63CmpBoolField@@QBE_NXZ evidence=?:placeholder tier=B hypothesis:mm1-gap-unit
 // FUNCTION: BFME2 0x0026FC6F size=28 name=?rva0026FC6F@Rva0026FC6F@@QBEHH@Z evidence=?:placeholder tier=B hypothesis:mm1-gap-unit
@@ -33,4 +36,18 @@
 // FUNCTION: BFME2 0x0026FDC0 size=10 name=?get@Rva0026FDC0FloatChase32Field@@QBEMXZ evidence=?:placeholder tier=B hypothesis:mm1-gap-unit
 // FUNCTION: BFME2 0x0026FDCA size=10 name=?get@Rva0026FDCAFloatChase32Field@@QBEMXZ evidence=?:placeholder tier=B hypothesis:mm1-gap-unit
 // FUNCTION: BFME2 0x0026FDD4 size=156 name=?Quick_Length@Vector3@@QBEMXZ evidence=N:ledger tier=B hypothesis:mm1-gap-unit
+Real Vector3::Quick_Length(void) const
+{
+	Real max = WWMath::Fabs(X);
+	Real mid = WWMath::Fabs(Y);
+	Real min = WWMath::Fabs(Z);
+	Real tmp;
+
+	if (max < mid) { tmp = max; max = mid; mid = tmp; }
+	if (max < min) { tmp = max; max = min; min = tmp; }
+	if (mid < min) { tmp = mid; mid = min; min = tmp; }
+
+	return max + (11.0f / 32.0f) * mid + 0.25f * min;
+}
+
 // FUNCTION: BFME2 0x0026FE70 size=174 name=?Quick_Distance@Vector3@@SAMABV1@0@Z evidence=N:ledger tier=B hypothesis:mm1-gap-unit

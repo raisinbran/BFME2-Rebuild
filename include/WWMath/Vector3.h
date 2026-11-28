@@ -84,6 +84,7 @@ public:
 	}
 	__forceinline Real Length2() const { return X * X + Y * Y + Z * Z; }
 	__forceinline Real Length() const { return WWMath::Sqrt(Length2()); }
+	Real Quick_Length(void) const;
 	__forceinline Vector3 &operator*=(Real k) { X *= k; Y *= k; Z *= k; return *this; }
 	WWINLINE Vector3 &operator+=(const Vector3 &v) { X += v.X; Y += v.Y; Z += v.Z; return *this; }
 	// Zero Hour's vector3.h line-intersection inlines (W3DView::calcCameraConstraints 0x00089A21 expands them).
