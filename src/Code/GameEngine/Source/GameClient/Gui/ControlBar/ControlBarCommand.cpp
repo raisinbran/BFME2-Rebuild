@@ -67,6 +67,22 @@ void ControlBar::populateInvDataCallback(Object *obj, void *userData)
 // FUNCTION: BFME2 0x0053BB16 size=360 name=?doTransportInventoryUI@ControlBar@@QAEXPAVObject@@PAVCommandSet@@@Z evidence=N:ledger tier=A
 
 // FUNCTION: BFME2 0x0053BC7E size=70 name=?getRappellerCount@@YAHPAVObject@@@Z evidence=N:ledger tier=A
+static Int getRappellerCount(Object *obj)
+{
+	Int num = 0;
+	ContainModuleInterface *contain = obj->getContain();
+	if (contain)
+	{
+		ContainmentListView view = contain->getList();
+		const ContainmentList &items = view.objects();
+		for (ContainmentList::const_iterator it = items.begin(); it != items.end(); ++it)
+		{
+			if ((*it)->isKindOf(KINDOF_CAN_RAPPEL))
+				++num;
+		}
+	}
+	return num;
+}
 
 // FUNCTION: BFME2 0x0053BD66 size=4431 name=?getCommandAvailability@ControlBar@@QBE?AW4CommandAvailability@@PBVCommandButton@@PAVGameWindow@@PAVObject@@PAM_N@Z evidence=N:ledger tier=A
 
