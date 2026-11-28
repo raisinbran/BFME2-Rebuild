@@ -73,6 +73,9 @@ void SnowManager::reset()
 // FUNCTION: BFME2 0x00201618 size=503 name=??0WeatherSetting@@QAE@XZ evidence=N:ledger tier=B hypothesis:Z
 
 // FUNCTION: BFME2 0x0020182B size=79 name=??1WeatherSetting@@UAE@XZ evidence=N:ledger tier=B hypothesis:Z
+WeatherSetting::~WeatherSetting()
+{
+}
 
 // FUNCTION: BFME2 0x0020187A size=279 name=?parseWeatherDefinition@INI@@SAXPAV1@@Z evidence=N:ledger tier=B hypothesis:Z
 
